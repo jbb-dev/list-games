@@ -6,10 +6,12 @@ class GameList extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            fiterActive : false,
             gamesList : []
         }
 
     this.deleteGame = this.deleteGame.bind(this)
+    this.showBestGames = this.showBestGames.bind(this)
 
     }
 
@@ -37,14 +39,26 @@ class GameList extends React.Component {
         this.setState({ gamesList : filteredList })
     }
 
+    showBestGames = () => {
+        let currentList = this.state.gamesList
+        let filteredList = currentList.filter(game => game.rating >= 4.5)
+        currentList.map(game => (
+            game.rating >= 4.5 ? 
+            this.setState({ gamesList : filteredList })
+            : this.setState({ gamesList : currentList}) 
+        ))
+        this.setState({fiterActive : !this.state.filterActive})
+        console.log(filteredList)
+    }
 
     render() {
-// console.log(this.state.gamesList)
+        console.log(this.state.fiterActive)
+
         return (
             <>
 
-            <button>BEST GAMES</button>
-
+            <button onClick={()=>this.showBestGames()}>{this.state.fiterActive === false ? 'BEST GAMES' : 'All Games'}</button>
+ 
             {this.state.gamesList.map(game => (
                 
                 <div key={game.id}>
