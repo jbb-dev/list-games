@@ -1,4 +1,6 @@
 import React from 'react'
+import './GameDetails.css'
+import {Link} from 'react-router-dom'
 
 
 const GameDetails = (props) => {
@@ -7,6 +9,11 @@ const GameDetails = (props) => {
 
     return(
         <>
+            <nav>
+                <ul>
+                    <Link to={{ pathname: `/` }}><li>Home</li></Link>
+                </ul>
+            </nav>
             <h1>{game}</h1>
 
             <div className='screenshots'>
