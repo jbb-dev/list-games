@@ -14,9 +14,10 @@ const GameDetails = (props) => {
                     <Link to={{ pathname: `/` }}><li>Home</li></Link>
                 </ul>
             </nav>
+            
             <h1>{game}</h1>
 
-            <div className='screenshots'>
+            <div className='screenshot'>
             {screens.map(screen => (
                 <img key={screen.id} alt={screen.id} src={screen.image}></img>
             ))}

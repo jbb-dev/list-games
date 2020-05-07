@@ -23,26 +23,19 @@ const Game = ({ image, name, rate, release, id, slug, clip, genres, screens, del
             <p>Regarder la vidéo de présentation :</p>
             <iframe src={clip} title={slug} key={id}></iframe>
 
-            <div className='screens'>
-
-                <p>Accèder aux screenshots du jeu :</p>
-
-                <div className='screenshots'>
-                    {screens.map(screen => (
-                        <img key={screen.id} alt={screen.id} src={screen.image}></img>
-                    ))}
-
-                </div>
+            <div className='end'>
+            
+                <Link to={{
+                    pathname: `/jeu/screenshots/${id}`,
+                    screens : {screens},
+                    name : {name}
+                }}>
+                    Voir les sreenshots du jeu
+                </Link>
+                
+                <button onClick={() => deleteGame({id})}>Delete this game</button>
 
             </div>
-            
-            <Link to={{
-                pathname: `/jeu/screenshots/${id}`,
-                screens : {screens},
-                name : {name}
-            }}>Voir le sreenshot</Link>
-            
-            <button onClick={() => deleteGame({id})}>Delete this game</button>
 
         </div>
     )
