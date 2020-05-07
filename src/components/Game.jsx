@@ -1,5 +1,6 @@
 import React from 'react'
 import './Game.css'
+import {Link} from 'react-router-dom'
 
 
 
@@ -34,7 +35,13 @@ const Game = ({ image, name, rate, release, id, slug, clip, genres, screens, del
                 </div>
 
             </div>
-
+            
+            <Link to={{
+                pathname: `/jeu/screenshots/${id}`,
+                screens : {screens},
+                name : {name}
+            }}>Voir le sreenshot</Link>
+            
             <button onClick={() => deleteGame({id})}>Delete this game</button>
 
         </div>

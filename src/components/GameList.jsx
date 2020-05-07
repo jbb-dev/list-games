@@ -19,11 +19,12 @@ class GameList extends React.Component {
         this.getData()
     }
 
-    // componentDidUpdate(prevState) {
-    //     if (prevState.gamesList !== this.state.gamesList) {
-    //       console.log('state has changed.')
-    //     }
-    //   }
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.gamesList !== this.state.gamesList) {
+          console.log('state has changed.')
+          console.log(this.state.games)
+        }
+      }
 
     getData() {
         Axios
@@ -34,25 +35,25 @@ class GameList extends React.Component {
     }
 
     deleteGame = (gameId) => {
-        let currentList = this.state.gamesList
+        let currentList = [...this.state.gamesList]
         let filteredList = currentList.filter(game => game.id !== gameId.id)
         this.setState({ gamesList : filteredList })
     }
 
     showBestGames = () => {
-        let currentList = this.state.gamesList
+        let currentList = [...this.state.gamesList]
         let filteredList = currentList.filter(game => game.rating >= 4.5)
         currentList.map(game => (
             game.rating >= 4.5 ? 
             this.setState({ gamesList : filteredList })
             : this.setState({ gamesList : currentList}) 
         ))
-        this.setState({fiterActive : !this.state.filterActive})
+        // this.setState({fiterActive : !this.state.filterActive})
         console.log(filteredList)
+        console.log(this.state.gameList)
     }
 
     render() {
-        console.log(this.state.fiterActive)
 
         return (
             <>

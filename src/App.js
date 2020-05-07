@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
-import GameList from './components/GameList'
+import Rooter from './Rooter';
+
 
 function App() {
   return (
     <div className="App">
-      <GameList />
+      <Rooter />
     </div>
   );
 }
