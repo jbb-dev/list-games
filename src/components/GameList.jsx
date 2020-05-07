@@ -1,5 +1,6 @@
 import React from 'react'
 import Axios from 'axios'
+import Game from './Game'
 
 class GameList extends React.Component {
     constructor(props) {
@@ -23,11 +24,29 @@ class GameList extends React.Component {
 
 
     render() {
-        console.log(this.state.gamesList)
+console.log(this.state.gamesList)
         return (
             <>
 
-            <h1>Test Game</h1>
+            {this.state.gamesList.map(game => (
+                
+                <div key={game.id}>
+                    <Game 
+                        image = {game.background_image}
+                        name = {game.name}
+                        rate = {game.rating}
+                        release = {game.released}
+                        id = {game.id}
+                        slug = {game.slug}
+                        genres = {game.genres.map(genre=> genre.name + ' ')}
+                        clip = {game.clip.clip}
+                        screens = {game.short_screenshots}
+                    />
+                
+                </div>))
+                
+            }
+            
 
             </>
         )

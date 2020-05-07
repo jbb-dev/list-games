@@ -1,11 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import GameList from './components/GameList'
 
 function App() {
   return (
     <div className="App">
-      <h1>Test</h1>
+      <GameList />
     </div>
   );
 }
