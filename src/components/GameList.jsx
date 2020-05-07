@@ -8,11 +8,20 @@ class GameList extends React.Component {
         this.state = {
             gamesList : []
         }
+
+    this.deleteGame = this.deleteGame.bind(this)
+
     }
 
     componentDidMount() {
         this.getData()
     }
+
+    // componentDidUpdate(prevState) {
+    //     if (prevState.gamesList !== this.state.gamesList) {
+    //       console.log('state has changed.')
+    //     }
+    //   }
 
     getData() {
         Axios
@@ -22,11 +31,19 @@ class GameList extends React.Component {
 
     }
 
+    deleteGame = (gameId) => {
+        let currentList = this.state.gamesList
+        let filteredList = currentList.filter(game => game.id !== gameId.id)
+        this.setState({ gamesList : filteredList })
+    }
+
 
     render() {
-console.log(this.state.gamesList)
+// console.log(this.state.gamesList)
         return (
             <>
+
+            <button>BEST GAMES</button>
 
             {this.state.gamesList.map(game => (
                 
@@ -41,6 +58,7 @@ console.log(this.state.gamesList)
                         genres = {game.genres.map(genre=> genre.name + ' ')}
                         clip = {game.clip.clip}
                         screens = {game.short_screenshots}
+                        deleteGame = {this.deleteGame}
                     />
                 
                 </div>))
